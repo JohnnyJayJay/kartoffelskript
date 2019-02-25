@@ -62,16 +62,16 @@ Nach einer Deklaration bekommt jede Variable den Standardwert `nichts` (s.u.).
 Beispiele:
 
 ```
-Deklariere Nummer als Ganzzahl und setze Nummer auf 5.
+Deklariere Nummer als eine Ganzzahl und setze Nummer auf 5.
 
-Deklariere Begrüßung als Zeichenkette.
+Deklariere Begrüßung als eine Zeichenkette.
 Setze Begrüßung auf "Hallo, Welt".
 ```
 
 Für Zahlentypen (`Ganzzahl`, `Fließkommazahl`) gibt es noch zwei zusätzliche Zuweisungsmöglichkeiten:
 
 ```
-Deklariere x als Ganzzahl und setze x auf 1.
+Deklariere x als eine Ganzzahl und setze x auf 1.
 Erhöhe x um 1.
 Verringere x um 1.
 ```
@@ -79,35 +79,45 @@ Verringere x um 1.
 Dies ist äquivalent zu:
 
 ```
-Deklariere x als Ganzzahl und setze x auf 1.
+Deklariere x als eine Ganzzahl und setze x auf 1.
 Setze x auf x + 1.
 Setze x auf x - 1.
 ```
 
-**Variablen können zu jedem Zeitpunkt einen bestimmten Artikel im Nominativ (der, die, das), im Dativ (dem, der, dem) oder im Akkusativ (den, die, das) als Präfix erhalten, um grammatikalisch korrekte Sätze zu ermöglichen.**
+**Variablen können zu jedem Zeitpunkt einen bestimmten Artikel als Präfix und eine Angleichung zu einem bestimmten Fall erhalten, um grammatikalisch korrekte Sätze zu ermöglichen.**
 
-Leider kann es zu Komplikationen kommen, da gerade die männliche Form (der) im Akkusativ und Dativ häufig angeglichen werden muss. Beispiel: *der* Buchstabe, aber *den* Buchstaben.
+Sollte ein Artikel bei der Deklaration genutzt werden, zählz dieser effektiv nicht mit zum Namen der Variable. Stattdessen wird der Nominativ aus den, dem Artikel folgenden, Wörtern gebildet und als Variablenname genutzt. Wird kein Artikel verwendet, so findet dies nicht statt. Auch in späteren Referenzen kann auf den Artikel verzichtet werden. Nur, wenn einer benutzt wird, wird der eigentliche Name aus der auf den Artikel folgenden Form rekonstruiert. Wird eine falsche Form oder ein falscher Artikel genutzt, gibt es einen Grammatikfehler.
 
-**Potentielle Lösungen hierfür: Trennzeichen (unsichtbar), escapen, Wörterbuch-Resource (bei Variablen mit mehreren Wörtern letztes Wort nutzen - ansonsten auch _ und - erlauben) // TODO**
-
-Diese drei Fälle sollten für gewöhnlich die einzigen sein, die in Bezug auf eine Variable vorkommen. Ausnahmen gibt es bei nativen Funktionen wie bei Zeichenketten (s.u.), diese fallen jedoch nicht darunter.
+**Potentielle Lösungen hierfür: OpenThesaurus Wörterbuch-Resource (bei Variablen mit mehreren Wörtern alle Wörter nutzen - Backticks ignorieren) // TODO**
 
 Erstes Beispiel (mit Artikeln):
 
 ```
-Deklariere die Nummer als Ganzzahl und setze die Nummer auf 5.
-Deklariere die Begrüßung als Zeichenkette.
+Deklariere die Nummer als eine Ganzzahl und setze die Nummer auf 5.
+Deklariere die Begrüßung als eine Zeichenkette.
 
 Setze die Begrüßung auf "Hallo, Welt".
 ```
 
+Damit auch bei Angleichung immer noch die richtigen Variablen referenziert werden, wird über ein Wörterbuch nach dem passenden Wort für eine angeglichene Form gesucht. Sollte die Form trotz Artikel falsch sein, wird ein Grammatikfehler geworfen. Bei Variablen mit mehreren Wörtern werden die Formen aller Wörter überprüft. Dies kann umgangen werden, indem die ignorierten Teile in Backticks \` gesetzt werden.
+
+Beispiel dafür:
+
+```
+Deklariere die Variable `ist_geeignet` als Wahrheitswert.
+```
+
+Nur das Wort "Variable" wird hier auf die entsprechende Grammatik überprüft. Dies ist besonders dann wichtig, wenn es ein Wort im deutschen gar nicht gibt.
+
 # 3. Datentypen
 
-In Kartoffelskript gibt es ein paar grundlegende Datentypen, die für Variablen genutzt werden können. Jede Variable und jeder Ausdruck hat einen dieser Datentypen. Alle Datentypen können per Umwandlung in einen anderen umgewandelt werden.
+In Kartoffelskript gibt es ein paar grundlegende Datentypen, die für Variablen genutzt werden können. Jede Variable und jeder Ausdruck hat einen dieser Datentypen. Alle Datentypen können per Umwandlung in einen anderen umgewandelt werden (s.u.).
+
+Überall, wo Datentypen benutzt werden (beim Deklarieren oder Umwandeln) werden sie mit einem unbestimmten Artikel davor verwendet (ein, eine, einen).
 
 ## 3.1. Ganzzahl
 
-Der Typ `Ganzzahl` beschreibt einen signed Integer mit einer Größe von 32 Bit. Die Reichweite ist also -2^31 - 2^31 - 1. Er ist das Äquivalent zu `int` aus anderen Sprachen.
+Der Typ `Ganzzahl` (`eine Ganzzahl`) beschreibt einen signed Integer mit einer Größe von 32 Bit. Die Reichweite ist also -2^31 - 2^31 - 1. Er ist das Äquivalent zu `int` aus anderen Sprachen.
 
 Auf Ausdrücke dieses Typens können die 5 arithmetischen Grundoperationen angewendet werden.
 
@@ -116,7 +126,7 @@ Direkte Ausdrücke (literal expressions) werden als einfache Zahl dargestellt. F
 Beispiel:
 
 ```
-Deklariere x als Ganzzahl und setze x auf -12.
+Deklariere x als eine Ganzzahl und setze x auf -12.
 Setze x auf 765443.
 ```
 
@@ -131,7 +141,7 @@ Direkte Ausdrücke werden entweder wie als Ganzzahl dargestellt oder im Falle ei
 Beispiel:
 
 ```
-Deklariere Pi als Fließkommazahl und setze Pi auf 3,14159.
+Deklariere Pi als eine Fließkommazahl und setze Pi auf 3,14159.
 ```
 
 ## 3.3. Zeichen
@@ -143,7 +153,7 @@ Direkte Ausdrücke werden in Hochkommata `'` eingeschlossen. Sie dürfen maximal
 Beispiel:
 
 ```
-Deklariere Buchstabe als Zeichen und setze Buchstabe auf 'X'.
+Deklariere den Buchstaben als ein Zeichen und setze den Buchstaben auf 'X'.
 ```
 
 ## 3.4. Zeichenkette
@@ -155,10 +165,10 @@ Direkte Ausdrücke werden in Anführungszeichen `"` eingeschlossen. Zeichenkette
 Beispiel:
 
 ```
-Deklariere das Grußwort als Zeichenkette und setze das Grußwort auf "Hallo".
-Deklariere den Namen als Zeichenkette und setze den Namen auf "Johnny".
+Deklariere das Grußwort als eine Zeichenkette und setze das Grußwort auf "Hallo".
+Deklariere den Namen als eine Zeichenkette und setze den Namen auf "Johnny".
 
-Deklariere die Begrüßung als Zeichenkette.
+Deklariere die Begrüßung als eine Zeichenkette.
 Setze die Begrüßung auf das Grußwort + ", " + den Namen.
 ```
 
@@ -173,7 +183,7 @@ Er kann nur einen von genau zwei Werten besitzen: `wahr` oder `falsch`. Außerde
 Beispiel:
 
 ```
-Deklariere die Bedingung als Wahrheitswert und setze die Bedingung auf wahr.
+Deklariere die Bedingung als einen Wahrheitswert und setze die Bedingung auf wahr.
 ```
 
 # 4. Felder (Arrays)
@@ -184,19 +194,19 @@ Sie werden deklariert als `<Typ>-Feld`. Der Zugriff auf einzelne Elemente eines 
 
 Felder fangen bei 1 an, nicht bei 0 wie in anderen Sprachen.
 
-Ein neues Feld wird so erzeugt: `neues Feld der Größe <Größe>`. Der Typ des Feldes wird inferiert. Die Größe gibt an, wie viele Elemente das Feld beinhaltet. Ein leeres Feld beinhaltet an jeder Position `nichts`.
+Ein neues Feld wird so erzeugt: `ein neues Feld der Größe <Größe>`. Der Typ des Feldes wird inferiert. Die Größe gibt an, wie viele Elemente das Feld beinhaltet. Ein leeres Feld beinhaltet an jeder Position `nichts`.
 
 So wird ein Feld erzeugt:
 
 ```
-Deklariere das Array als Ganzzahl-Feld und setze das Array auf neues Feld der Größe 5.
+Deklariere das Array als ein Ganzzahl-Feld und setze das Array auf ein neues Feld der Größe 5.
 ```
 
 So werden Werte eingetragen:
 
 ```
-Setze das Element 1 aus Array auf -10.
-Setze das Element 2 aus Array auf 42.
+Setze das Element 1 aus dem Array auf -10.
+Setze das Element 2 aus dem Array auf 42.
 ```
 
 So werden Werte ausgelesen:
@@ -225,3 +235,35 @@ Setze den Inhalt auf die Zeichen in dem Wort.  <-- Fehler
 ## 6.1. Vergleiche
 
 Vergleiche sind Operationen, die immer auf zwei Operanden mithilfe eines Operators angewendet werden und einen `Wahrheitswert` zurückgeben. Sie sind also Ausdrücke.
+
+Alle Vergleiche nutzen das Wort `ist` in Kombination mit dem eigentlichen Operator. Dies wird später bei den Kontrollstrukturen wichtig.
+
+### 6.1.1. (Un)gleichheit
+
+Auf Gleich- und Ungleichheit wird mit den Operatoren `gleich` und `ungleich` geprüft.
+
+```
+Deklariere die Wahrheit als einen Wahrheitswert.
+Setze die Wahrheit auf 5 ist gleich 5.
+Setze die Wahrheit auf 3 ist ungleich 5.
+```
+
+Vorsicht: wenn es sich beim zweiten Operanden um eine Variable mit Artikel handelt, muss der Name der Variablen im Dativ stehen.
+
+```
+Deklariere den Namen als eine Zeichenkette und setze den Namen auf "Lena".
+Deklariere die Variable `heißt_Lena` als einen Wahrheitswert und setze die Variable `heißt_Lena` auf "Lena" ist gleich dem Namen.
+```
+
+### 6.1.2. Größer als, kleiner als
+
+Größer als hat in Kartoffelskript den Operator `größer als`, kleiner als den Operator `kleiner als`. Für inklusives < und > gibt es die Operatoren `kleiner oder gleich` und `größer oder gleich`.
+
+```
+Deklariere w als einen Wahrheitswert.
+Setze w auf 4 ist kleiner oder gleich 5.
+Setze w auf 5 ist größer als 10.
+
+```
+
+
