@@ -25,9 +25,12 @@
       2. Größer als, kleiner als
       3. Boolesche Operatoren
    2. Arithmetische Operationen
-   3. Ausgabe
-   4. Eingabe
-   5. Umwandlung
+      1. Addition
+      2. Subtraktion
+      3. Multiplikation
+      4. Division
+      5. Divisionsrest
+   3. Umwandlung
 
 7. Kontrollstrukturen
 
@@ -38,6 +41,12 @@
    3. for-each
 
 8. Funktionen
+
+   1. Native Funktionen
+
+      1. Ausgabe
+
+      2. Eingabe
 
 9. Fehler
 
@@ -55,23 +64,23 @@ In Kartoffelskript ist besonders eine Sache wichtig: **Der Quelltext sollte sich
 
 Variablen müssen mit expliziter Typangabe deklariert werden. Sie können zwar nicht im gleichen Zuge initialisiert werden, also einen Wert erhalten, die Anweisungen können jedoch über ein `und` verknüpft werden. Der Typ einer Variablen ist nicht mehr veränderbar, der Wert einer Variable schon. Eine Variable kann nicht denselben Namen wie eine bereits existierende haben. Ein Variablenname darf keine Leerzeichen beeinhalten. Zu den Benennungskonventionen, siehe Style Guide.
 
-Grundsätzlich wird die Schlüsselwortkombination `setze <Variable> auf <Wert>` benutzt, um Variablen einen Wert zuzuweisen. Die Deklaration findet nur einmal am Anfang statt und hat die Form `deklariere <Variable> als <Typ>`. 
+Grundsätzlich wird die Schlüsselwortkombination `setze <Variable> auf <Wert>` benutzt, um Variablen einen Wert zuzuweisen. Die Deklaration findet nur einmal am Anfang statt und hat die Form `deklariere <Typ> <Variable>`. 
 
 Nach einer Deklaration bekommt jede Variable den Standardwert `nichts` (s.u.).
 
 Beispiele:
 
 ```
-Deklariere Nummer als eine Ganzzahl und setze Nummer auf 5.
+Deklariere Ganzzahl Nummer und setze Nummer auf 5.
 
-Deklariere Begrüßung als eine Zeichenkette.
+Deklariere Zeichenkette Begrüßung.
 Setze Begrüßung auf "Hallo, Welt".
 ```
 
 Für Zahlentypen (`Ganzzahl`, `Fließkommazahl`) gibt es noch zwei zusätzliche Zuweisungsmöglichkeiten:
 
 ```
-Deklariere x als eine Ganzzahl und setze x auf 1.
+Deklariere Ganzzahl x und setze x auf 1.
 Erhöhe x um 1.
 Verringere x um 1.
 ```
@@ -79,22 +88,22 @@ Verringere x um 1.
 Dies ist äquivalent zu:
 
 ```
-Deklariere x als eine Ganzzahl und setze x auf 1.
+Deklariere die Ganzzahl x und setze x auf 1.
 Setze x auf x + 1.
 Setze x auf x - 1.
 ```
 
 **Variablen können zu jedem Zeitpunkt einen bestimmten Artikel als Präfix und eine Angleichung zu einem bestimmten Fall erhalten, um grammatikalisch korrekte Sätze zu ermöglichen.**
 
-Sollte ein Artikel bei der Deklaration genutzt werden, zählz dieser effektiv nicht mit zum Namen der Variable. Stattdessen wird der Nominativ aus den, dem Artikel folgenden, Wörtern gebildet und als Variablenname genutzt. Wird kein Artikel verwendet, so findet dies nicht statt. Auch in späteren Referenzen kann auf den Artikel verzichtet werden. Nur, wenn einer benutzt wird, wird der eigentliche Name aus der auf den Artikel folgenden Form rekonstruiert. Wird eine falsche Form oder ein falscher Artikel genutzt, gibt es einen Grammatikfehler.
+Sollte ein Artikel bei der Deklaration genutzt werden, zählt dieser effektiv nicht mit zum Namen der Variable. Stattdessen wird der Nominativ aus den, dem Artikel folgenden, Wörtern gebildet und als Variablenname genutzt. Wird kein Artikel verwendet, so findet dies nicht statt. Auch in späteren Referenzen kann auf den Artikel verzichtet werden. Nur, wenn einer benutzt wird, wird der eigentliche Name aus der auf den Artikel folgenden Form rekonstruiert. Wird eine falsche Form oder ein falscher Artikel genutzt, gibt es einen Grammatikfehler.
 
 **Potentielle Lösungen hierfür: OpenThesaurus Wörterbuch-Resource (bei Variablen mit mehreren Wörtern alle Wörter nutzen - Backticks ignorieren) // TODO**
 
 Erstes Beispiel (mit Artikeln):
 
 ```
-Deklariere die Nummer als eine Ganzzahl und setze die Nummer auf 5.
-Deklariere die Begrüßung als eine Zeichenkette.
+Deklariere die Ganzzahl Nummer und setze die Nummer auf 5.
+Deklariere die Zeichenkette Begrüßung.
 
 Setze die Begrüßung auf "Hallo, Welt".
 ```
@@ -263,7 +272,107 @@ Größer als hat in Kartoffelskript den Operator `größer als`, kleiner als den
 Deklariere w als einen Wahrheitswert.
 Setze w auf 4 ist kleiner oder gleich 5.
 Setze w auf 5 ist größer als 10.
+```
+
+### 6.1.3. Boolesche Operationen
+
+Boolesche Operationen in Kartoffelskript beschränken sich auf die Operatoren `oder` und `und`. Sie sind das Äquivalent zu `||` bzw. `&&` aus Java und werden auch genau so eingesetzt.
 
 ```
+Deklariere w als einen Wahrheitswert.
+Setze w auf wahr oder falsch. <-- w = wahr
+Setze w auf wahr und falsch. <-- w = falsch
+```
+
+## 6.2. Arithmetische Operationen
+
+### 6.2.1. Addition
+
+Um die Summe zweier Zahlenwerte zu erhalten, wird der Additionsoperator `+` genutzt.
+
+```
+Setze die Summe auf 2 + 3.
+```
+
+### 6.2.2. Subtraktion
+
+Um die Differenz zweier Zahlenwerte zu erhalten, wird der Subtraktionsoperator `-` genutzt.
+
+```
+Setze die Differenz auf 3 - 2.
+```
+
+### 6.2.3. Multiplikation
+
+Um das Produkt zweier Zahlenwerte zu erhalten, wird der Multiplikationsoperator `⋅` (U+22C5) genutzt.
+
+```
+Setze das Produkt auf 2 ⋅ 3.
+```
+
+### 6.2.4. Division
+
+Um den Quotienten zweier Zahlenwerte zu erhalten, wird der Divisionsoperator `:` genutzt.
+
+Ist der Divisor des Ausdrucks = 0, so gibt es einen Fehler.
+
+```
+Setze den Quotienten auf 6 : 3.
+```
+
+### 6.2.5. Divisionsrest
+
+Um den ganzzahligen Rest einer Division mit zwei Ganzzahlen zu erhalten, wird der Modulo-Operator `mod` genutzt.
+
+```
+Setze den Rest auf 10 mod 3.
+```
+
+## 6.3. Umwandlung
+
+Wie bereits erwähnt, können die Datentypen `Ganzzahl`, `Fließkommazahl`, `Zeichen`, `Zeichenkette` und `Wahrheitswert` ineinander umgewandelt werden.
+
+Umwandlungen irgendeines Typen in eine Zeichenkette umschließen den Wert als des Typen in einer Zeichenkette. Umgekehrt, um eine Zeichenkette in einen anderen Typen umzuwandeln, muss die Zeichenkette einem direkten, zu dem Typ passenden, Wert entsprechen.
+
+Eine Umwandlung von `Ganzzahl` zu `Zeichen` oder `Fließkommazahl` ist immer möglich, umgekehrt gibt es bei `Fließkommazahl` zu `Ganzzahl` die Einschränkung, dass Nachkommastellen wegfallen.
+
+Zum Umwandeln dient das Schlüsselwort `als`.
+
+```
+Deklariere die Zeichenkette Text und setze den Text auf "42".
+Deklariere die Ganzzahl Zahl und setze die Zahl auf den Text als Ganzzahl.
+```
+
+Ob ein Wert in einen anderen umgewandelt werden kann, kann mit dem Operator `ist`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
