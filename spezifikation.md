@@ -43,10 +43,10 @@
 8. Funktionen
 
    1. Native Funktionen
-
       1. Ausgabe
 
       2. Eingabe
+   2. Sonstige
 
 9. Fehler
 
@@ -343,36 +343,10 @@ Deklariere die Zeichenkette Text und setze den Text auf "42".
 Deklariere die Ganzzahl Zahl und setze die Zahl auf den Text als Ganzzahl.
 ```
 
-Ob ein Wert in einen anderen umgewandelt werden kann, kann mit dem Operator `ist`
+Ob ein Wert in einen anderen umgewandelt werden kann, kann mit dem Operator `ist vom Typ` überprüft werden.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
+Deklariere den Wahrheitswert w, dann setze w auf "3" ist vom Typ Ganzzahl.
+```
 
 
