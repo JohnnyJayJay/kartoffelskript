@@ -108,7 +108,12 @@ Damit auch bei Angleichung immer noch die richtigen Variablen referenziert werde
 
 In Kartoffelskript gibt es ein paar grundlegende Datentypen, die für Variablen genutzt werden können. Jede Variable und jeder Ausdruck hat einen dieser Datentypen. Alle Datentypen können per Umwandlung in einen anderen umgewandelt werden (s.u.).
 
-Überall, wo Datentypen benutzt werden (beim Deklarieren oder Umwandeln) werden sie mit einem unbestimmten Artikel davor verwendet (ein, eine, einen).
+Alle Ausdrücke können als Präfix ein `<Artikel> <Typ>` erhalten, um die Grammatik an einigen Punkten zu verbessern.
+
+```
+Setze w auf 4 ist ungleich 5. 
+Setze w auf die Aussage 4 ist ungleich 5.
+```
 
 ## 3.1. Ganzzahl
 
@@ -260,9 +265,9 @@ Setze w auf die Aussage: 4 ist kleiner oder gleich 5.
 Setze w auf die Aussage: 5 ist größer als 10.
 ```
 
-### 6.1.3. Boolesche Operationen
+### 6.1.3. Logische Operationen
 
-Boolesche Operationen in Kartoffelskript beschränken sich auf die Operatoren `oder` und `und`. Sie sind das Äquivalent zu `||` bzw. `&&` aus Java und werden auch genau so eingesetzt.
+Logische Operationen in Kartoffelskript beschränken sich auf die Operatoren `oder` und `und`. Sie sind das Äquivalent zu `||` bzw. `&&` aus Java und werden auch genau so eingesetzt.
 
 ```
 Sei w eine Aussage.
@@ -341,7 +346,3 @@ Setze w auf die Aussage: "3" ist eine Ganzzahl.
 # 7. Kontrollstrukturen
 
 ## 7.1. if, if-else, if-elseif
-
-
-
-
