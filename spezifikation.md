@@ -16,14 +16,16 @@
 
 4. Felder (Arrays)
 
-5. Nichts
+5. Blöcke
 
-6. Operationen
+6. Nichts
+
+7. Operationen
 
    1. Vergleiche
       1. (Un)gleichheit
       2. Größer als, kleiner als
-      3. Boolesche Operatoren
+      3. Logische Operationen
    2. Arithmetische Operationen
       1. Addition
       2. Subtraktion
@@ -32,23 +34,27 @@
       5. Divisionsrest
    3. Umwandlung
 
-7. Kontrollstrukturen
+8. Kontrollstrukturen
 
-   1. if / if-else / if-elseif
+   1. Blöcke
 
-   2. while
+   2. if 
 
-   3. for-each
+   3. while
 
-8. Funktionen
+   4. for
 
-   1. Native Funktionen
-      1. Ausgabe
+9. Kommentare
 
-      2. Eingabe
-   2. Sonstige
+10. Funktionen
 
-9. Fehler
+    1. Native Funktionen
+       1. Ausgabe
+
+       2. Eingabe
+    2. Sonstige
+
+11. Fehler
 
 # 1. Allgemein
 
@@ -56,15 +62,15 @@ Kartoffelskript ist eine interpretierte, imperative Sprache, welche eine, vollst
 
 Quelltext besteht aus einer Reihe von Anweisungen und Definitionen. Zu Anweisungen gehören Deklarationen, Zuweisungen, Kontrollstrukturen sowie Ausdrücke. Die Anweisungen sind syntaktisch alle dem deutschen Imperativ angepasst.
 
-Anweisungen werden mit einem Punkt `.` beendet. Anweisungen (mit der Ausnahme von Deklarationen und Kontrollstrukturen) können außerdem mithilfe von `, dann` verknüpft werden. Satzanfänge  sollten immer großgeschrieben sein, das gilt auch für sämtliche, normalerweise klein geschriebene, Schlüsselwörter. Zeilenumbrüche können und sollten an den Stellen genutzt werden, an denen sie Sinn ergeben. 
+Anweisungen werden mit einem Punkt `.` beendet. Zeilenumbrüche können und sollten an den Stellen genutzt werden, an denen sie Sinn ergeben. 
 
 In Kartoffelskript ist besonders eine Sache wichtig: **Der Quelltext sollte sich nach Möglichkeit wie ein deutscher, grammatikalisch korrekter Text lesen.**
 
 # 2. Variablen
 
-Variablen müssen mit expliziter Typangabe deklariert werden. Sie können, müssen aber nicht im gleichen Zuge initialisiert werden. Der Typ einer Variablen ist nicht mehr veränderbar, der Wert einer Variable schon. Eine Variable kann nicht denselben Namen wie eine bereits existierende haben. Ein Variablenname darf keine Leerzeichen beeinhalten (?). Zu den Benennungskonventionen, siehe Style Guide.
+Variablen müssen mit expliziter Typangabe deklariert werden. Sie können, müssen aber nicht im gleichen Zuge initialisiert werden. Der Typ einer Variablen ist nicht mehr veränderbar, der Wert einer Variable schon. Eine Variable kann nicht denselben Namen wie eine bereits existierende haben. Variablen dürfen aus mehreren Wörtern bestehen. Zu den Benennungskonventionen, siehe Style Guide.
 
-Grundsätzlich wird die Schlüsselwortkombination `setze <Variable> auf <Wert>` benutzt, um Variablen einen Wert zuzuweisen. Die Deklaration findet nur einmal am Anfang statt und hat die Form `sei <Variable> ein <Typ>`.  Um eine Variable zu initialisieren, muss an die Deklaration `mit dem Wert <Wert>` gehängt werden.
+Grundsätzlich wird die Schlüsselwortkombination `setze <Variable> auf <Wert>` benutzt, um Variablen einen Wert zuzuweisen. Die Deklaration findet nur einmal am Anfang statt und hat die Form `sei[en] <Variable> ein <Typ>`.  Um eine Variable zu initialisieren, muss an die Deklaration `mit dem Wert <Wert>` gehängt werden.
 
 Nach einer Deklaration bekommt jede Variable den Standardwert `nichts`, sofern sie nicht initialisiert wurde. (s.u.).
 
@@ -80,19 +86,23 @@ Für Zahlentypen (`Ganzzahl`, `Fließkommazahl`) gibt es noch zwei zusätzliche 
 
 ```
 Sei x eine Ganzzahl.
-Setze x auf 0, dann erhöhe x um 1, dann verringere x um 1.
+Setze x auf 0.
+Erhöhe x um 1.
+Verringere x um 1.
 ```
 
 Dies ist äquivalent zu:
 
 ```
 Sei x eine Ganzzahl.
-Setze x auf 0, dann setze x auf x + 1, dann setze x auf x - 1.
+Setze x auf 0.
+Setze x auf x + 1.
+Setze x auf x - 1.
 ```
 
 **Variablen können zu jedem Zeitpunkt einen bestimmten Artikel als Präfix und eine Angleichung zu einem bestimmten Fall erhalten, um grammatikalisch korrekte Sätze zu ermöglichen.**
 
-Sollte ein Artikel bei der Deklaration genutzt werden, zählt dieser effektiv nicht mit zum Namen der Variable. Stattdessen wird der Nominativ aus dem, dem Artikel folgenden, Wort (sofern es existiert) gebildet und als Variablenname genutzt. Wird kein Artikel verwendet, so findet dies nicht statt. Auch in späteren Referenzen kann auf den Artikel verzichtet werden. Nur, wenn einer benutzt wird, wird der eigentliche Name aus der auf den Artikel folgenden Form rekonstruiert. Wird eine falsche Form oder ein falscher Artikel genutzt, gibt es einen Grammatikfehler.
+Sollte ein Artikel bei der Deklaration genutzt werden, zählt dieser effektiv nicht mit zum Namen der Variable. Stattdessen wird der Nominativ aus dem, dem Artikel folgenden, Wort (sofern es existiert, korrekte Komposita gehen auch) gebildet und als Variablenname genutzt. Bei Substantiven mit Adjektiven werden letztere auch mit einbezogen. Wird kein Artikel verwendet, so findet dies nicht statt. Auch in späteren Referenzen kann auf den Artikel verzichtet werden. Nur, wenn einer benutzt wird, wird der eigentliche Name aus der auf den Artikel folgenden Form rekonstruiert. 
 
 Erstes Beispiel (mit Artikeln):
 
@@ -106,9 +116,9 @@ Damit auch bei Angleichung immer noch die richtigen Variablen referenziert werde
 
 # 3. Datentypen
 
-In Kartoffelskript gibt es ein paar grundlegende Datentypen, die für Variablen genutzt werden können. Jede Variable und jeder Ausdruck hat einen dieser Datentypen. Alle Datentypen können per Umwandlung in einen anderen umgewandelt werden (s.u.).
+In Kartoffelskript gibt es ein paar grundlegende Datentypen, die für Variablen genutzt werden können. Jede Variable und jeder Ausdruck hat einen dieser Datentypen (Felder fallen genau genommen auch darunter, werden hier aber als Spezialfall gelistet). Alle Datentypen können per Umwandlung in einen anderen umgewandelt werden (s.u.).
 
-Alle Ausdrücke können als Präfix ein `<Artikel> <Typ>` erhalten, um die Grammatik an einigen Punkten zu verbessern.
+Alle Ausdrücke können als Präfix ein `<Artikel> <Typ>` erhalten, um die Grammatik an einigen Punkten zu verbessern. Die Artikel können entsprechend des Falls natürlich auch variieren.
 
 ```
 Setze w auf 4 ist ungleich 5. 
@@ -173,11 +183,11 @@ Setze die Begrüßung auf das Grußwort + ", " + den Namen.
 
 Außerdem bieten Zeichenketten eine native Funktion. Die Zeichen einer Zeichenkette können mit dem Ausdruck `Zeichen in <Zeichenkette>`  erhalten werden. Die Rückgabe dieses Ausdrucks ist ein `Zeichen-Feld`.
 
-## 3.5 Aussage
+## 3.5. Aussage
 
 Der Typ `Aussage` beschreibt einen simplen, binären Wert. Er ist das Äquivalent zu `boolean` oder `bool` aus anderen Sprachen.
 
-Er kann nur einen von genau zwei Werten besitzen: `wahr` oder `falsch`. Außerdem können Werte dieses Typs direkt in Bedingungen für Kontrollstrukturen verwendet werden (dazu später mehr).
+Er kann nur einen von genau zwei Werten besitzen: `wahr` oder `falsch`. Außerdem werden Ausdrücke dieses Typs für Bedingungen in Kontrollstrukturen verwendet (dazu später mehr).
 
 Beispiel:
 
@@ -193,7 +203,7 @@ Sie werden deklariert als `<Typ>-Feld`. Der Zugriff auf einzelne Elemente eines 
 
 Felder fangen bei 1 an, nicht bei 0 wie in anderen Sprachen.
 
-Ein neues Feld wird so erzeugt: `ein leeres Feld der Größe <Größe>`. Der Typ des Feldes wird inferiert. Die Größe gibt an, wie viele Elemente das Feld beinhaltet. Ein leeres Feld beinhaltet an jeder Position `nichts`.
+Ein neues Feld wird so erzeugt: `ein leeres Feld der Größe <Größe>`. Der Typ des Feldes wird inferiert. Die Größe gibt an, wie viele Elemente das Feld beinhaltet. Ein leeres Feld beinhaltet an jedem Index `nichts`.
 
 So wird ein Feld erzeugt:
 
@@ -212,11 +222,25 @@ Setze Element 2 aus dem Array auf 42.
 So werden Werte ausgelesen:
 
 ```
-Deklariere die Ganzzahl Antwort.
+Sei die Antwort eine Ganzzahl.
 Setze die Antwort auf Element 2 aus dem Array.
 ```
 
-# 5. Nichts
+Mit dem Ausdruck `die Größe von <Feld>` lässt sich die ganzzahlige Anzahl der Elemente eines Feldes holen.
+
+# 5. Blöcke
+
+Blöcke werden genutzt, um mehrere Anweisungen zu einer zusammenzufassen. Dies ist besonders für Kontrollstrukturen wichtig.
+
+Das Ausführen von Blöcken hat keinen Rückgabewert.
+
+```
+Führe den Block {
+    # Anweisungen
+} aus.
+```
+
+# 6. Nichts
 
 Das Schlüsselwort `nichts` beschreibt einen fehlenden Wert und ist äquivalent zu `null` aus Java. Jedoch ist `nichts`  in Kartoffelskript ein gültiger Wert für jeden Datentypen und der Standardwert für jede neu deklarierte Variable.
 
@@ -227,59 +251,67 @@ Beispiel:
 ```
 Sei das Wort eine Zeichenkette.
 Sei der Inhalt ein Zeichen-Feld.
-Setze den Inhalt auf die Zeichen in dem Wort.  <-- Fehler
+Setze den Inhalt auf die Zeichen in dem Wort. # Fehler
 ```
 
-# 6. Operationen
+# 7. Operationen
 
-## 6.1. Vergleiche
+## 7.1. Vergleiche
 
 Vergleiche sind Operationen, die immer auf zwei Operanden mithilfe eines Operators angewendet werden und einen `Aussage` zurückgeben. Sie sind also Ausdrücke.
 
 Um einen Vergleich als Wert für den Typ `Aussage` zu nutzen, muss er das Präfix `<Artikel entsprechend des Falls> Aussage:` erhalten.
 
-### 6.1.1. (Un)gleichheit
+### 7.1.1. (Un)gleichheit
 
 Auf Gleich- und Ungleichheit wird mit den Operatoren `gleich` und `ungleich` geprüft.
 
 ```
 Sei die Wahrheit eine Aussage.
-Setze die Wahrheit auf die Aussage: 5 ist gleich 5.
-Setze die Wahrheit auf die Aussage: 3 ist ungleich 5.
+Setze die Wahrheit auf die Aussage 5 ist gleich 5.
+Setze die Wahrheit auf die Aussage 3 ist ungleich 5.
 ```
 
 Vorsicht: wenn es sich beim zweiten Operanden um eine Variable mit Artikel handelt, muss der Name der Variablen im Dativ stehen.
 
 ```
 Sei der Name eine Zeichenkette mit dem Wert "Lena".
-Deklariere die Bedingung, dann setze die Bedingung auf die Aussage: "Lena" ist gleich dem Namen.
+Sei die Bedingung eine Aussage mit dem Wert der Aussage "Lena" ist gleich dem Namen.
 ```
 
-### 6.1.2. Größer als, kleiner als
+### 7.1.2. Größer als, kleiner als
 
 Größer als hat in Kartoffelskript den Operator `größer als`, kleiner als den Operator `kleiner als`. Für inklusives < und > gibt es die Operatoren `kleiner oder gleich` und `größer oder gleich`.
 
 ```
 Sei w eine Aussage.
-Setze w auf die Aussage: 4 ist kleiner oder gleich 5.
-Setze w auf die Aussage: 5 ist größer als 10.
+Setze w auf die Aussage 4 ist kleiner oder gleich 5.
+Setze w auf die Aussage 5 ist größer als 10.
 ```
 
-### 6.1.3. Logische Operationen
+### 7.1.3. Logische Operationen
 
-Logische Operationen in Kartoffelskript beschränken sich auf die Operatoren `oder` und `und`. Sie sind das Äquivalent zu `||` bzw. `&&` aus Java und werden auch genau so eingesetzt.
+Logische Operationen in Kartoffelskript beschränken sich auf die Operatoren `und` (AND), `oder` (OR) und `nicht` (NOT).  `oder` und `und` werden genutzt, um Aussagen miteinander zu verknüpfen:
 
 ```
 Sei w eine Aussage.
-Setze w auf die Aussage: wahr oder falsch. <-- w = wahr
-Setze w auf die Aussage: wahr und falsch.  <-- w = falsch
+Setze w auf die Aussage wahr oder falsch. # w = wahr
+Setze w auf die Aussage wahr und falsch.  # w = falsch
 ```
 
-## 6.2. Arithmetische Operationen
+`nicht` negiert das Ergebnis einer Operation und kann für jeden Vergleichsoperator nach dem `ist` eingefügt werden:
+
+```
+Sei w eine Aussage.
+Setze w auf die Aussage 5 ist größer als 4.       # w = wahr
+Setze w auf die Aussage 5 ist nicht größer als 4. # w = falsch
+```
+
+## 7.2. Arithmetische Operationen
 
 Zu den arithmetischen Operationen gehören die 4 Grundoperationen plus, minus, mal und geteilt. Die Rechenregeln für diese werden beachtet (Punkt vor Strich) und Klammersetzung wird unterstützt.
 
-### 6.2.1. Addition
+### 7.2.1. Addition
 
 Um die Summe zweier Zahlenwerte zu erhalten, wird der Additionsoperator `+` genutzt.
 
@@ -287,7 +319,7 @@ Um die Summe zweier Zahlenwerte zu erhalten, wird der Additionsoperator `+` genu
 Setze die Summe auf 2 + 3.
 ```
 
-### 6.2.2. Subtraktion
+### 7.2.2. Subtraktion
 
 Um die Differenz zweier Zahlenwerte zu erhalten, wird der Subtraktionsoperator `-` genutzt.
 
@@ -295,25 +327,25 @@ Um die Differenz zweier Zahlenwerte zu erhalten, wird der Subtraktionsoperator `
 Setze die Differenz auf 3 - 2.
 ```
 
-### 6.2.3. Multiplikation
+### 7.2.3. Multiplikation
 
-Um das Produkt zweier Zahlenwerte zu erhalten, wird der Multiplikationsoperator `⋅` (U+22C5) genutzt.
+Um das Produkt zweier Zahlenwerte zu erhalten, wird der Multiplikationsoperator `*`  genutzt.
 
 ```
-Setze das Produkt auf 2 ⋅ 3.
+Setze das Produkt auf 2 * 3.
 ```
 
-### 6.2.4. Division
+### 7.2.4. Division
 
-Um den Quotienten zweier Zahlenwerte zu erhalten, wird der Divisionsoperator `:` genutzt.
+Um den Quotienten zweier Zahlenwerte zu erhalten, wird der Divisionsoperator `/` genutzt.
 
 Ist der Divisor des Ausdrucks = 0, so gibt es einen Fehler.
 
 ```
-Setze den Quotienten auf 6 : 3.
+Setze den Quotienten auf 6 / 3.
 ```
 
-### 6.2.5. Divisionsrest
+### 7.2.5. Divisionsrest
 
 Um den ganzzahligen Rest einer Division mit zwei Ganzzahlen zu erhalten, wird der Modulo-Operator `mod` genutzt.
 
@@ -321,7 +353,7 @@ Um den ganzzahligen Rest einer Division mit zwei Ganzzahlen zu erhalten, wird de
 Setze den Rest auf 10 mod 3.
 ```
 
-## 6.3. Umwandlung
+## 7.3. Umwandlung
 
 Wie bereits erwähnt, können die Datentypen `Ganzzahl`, `Fließkommazahl`, `Zeichen`, `Zeichenkette` und `Wahrheitswert` ineinander umgewandelt werden.
 
@@ -343,6 +375,38 @@ Sei w eine Aussage.
 Setze w auf die Aussage: "3" ist eine Ganzzahl.
 ```
 
-# 7. Kontrollstrukturen
+# 8. Kontrollstrukturen
 
-## 7.1. if, if-else, if-elseif
+Kontrollstrukturen verändern den Programmfluss in Abhängigkeit von Bedingungen. 
+
+## 8.2. if
+
+Die Schlüsselphrase für if-Statements ist `wenn <Aussage> <wahr/falsch> ist, <Anweisung>.` Zuerst wird die Aussage evaluiert und dann mit dem darauffolgenden, direkten Wert verglichen. Ergibt dies wiederum `wahr`, so wird die folgende Anweisung ausgeführt.
+
+```
+Sei die eine Bedingung eine Aussage mit dem Wert wahr.
+Sei die andere Bedingung eine Aussage mit dem Wert falsch.
+
+Sei x eine Ganzzahl.
+
+Wenn die eine Bedingung wahr ist, setze x auf 0.
+Wenn die andere Bedingung wahr ist, führe den Block {
+    Setze x auf y.
+    Erhöhe x um 3.
+} aus.
+```
+
+## 8.3 while
+
+Die Schlüsselphrase für `while`-Schleifen ist `solange <Aussage> <wahr/falsch> ist, <Anweisung>`.  Für `do-while`-Schleifen werden Haupt- und Nebensatz einfach vertauscht. Die Überprüfung der Bedingung findet genau so statt wie bei if-Statements.
+
+```
+Sei w eine Aussage mit dem Wert falsch.
+
+Solange w wahr ist, führe den Block {} aus. # Wird kein Mal ausgeführt (While)
+Führe den Block {} aus, solange w wahr ist. # Wird ein Mal ausgeführt (Do-While)
+```
+
+
+
+
