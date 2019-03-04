@@ -281,11 +281,11 @@ Sei die Bedingung eine Aussage mit dem Wert der Aussage "Lena" ist gleich dem Na
 
 ### 7.1.2. Größer als, kleiner als
 
-Größer als hat in Kartoffelskript den Operator `größer als`, kleiner als den Operator `kleiner als`. Für inklusives < und > gibt es die Operatoren `kleiner oder gleich` und `größer oder gleich`.
+Größer als hat in Kartoffelskript den Operator `größer als`, kleiner als den Operator `kleiner als`. Für inklusives < und > gibt es die Operatoren `kleiner gleich` und `größer gleich`.
 
 ```
 Sei w eine Aussage.
-Setze w auf die Aussage 4 ist kleiner oder gleich 5.
+Setze w auf die Aussage 4 ist kleiner gleich 5.
 Setze w auf die Aussage 5 ist größer als 10.
 ```
 
