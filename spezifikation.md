@@ -58,7 +58,7 @@
 
 # 1. Allgemein
 
-Kartoffelskript ist eine interpretierte, imperative Sprache, welche eine, vollständig der deutschen Sprache angepasste, Syntax besitzt. Sie ist stark und statisch typisiert, allerdings nicht objektorientiert.
+Kartoffelskript ist eine imperative Sprache, welche eine, vollständig der deutschen Sprache angepasste, Syntax besitzt. Sie ist stark und statisch typisiert, allerdings nicht objektorientiert.
 
 Quelltext besteht aus einer Reihe von Anweisungen und Definitionen. Zu Anweisungen gehören Deklarationen, Zuweisungen, Kontrollstrukturen sowie Ausdrücke. Die Anweisungen sind syntaktisch alle dem deutschen Imperativ angepasst.
 
@@ -101,6 +101,8 @@ Setze x auf x - 1.
 ```
 
 **Variablen können zu jedem Zeitpunkt einen bestimmten Artikel als Präfix und eine Angleichung zu einem bestimmten Fall erhalten, um grammatikalisch korrekte Sätze zu ermöglichen.**
+
+*Implementation note: Nutzung eines [Morphologie-Wörterbuchs](http://www.danielnaber.de/morphologie/)*
 
 Sollte ein Artikel bei der Deklaration genutzt werden, zählt dieser effektiv nicht mit zum Namen der Variable. Stattdessen wird der Nominativ aus dem, dem Artikel folgenden, Wort (sofern es existiert, korrekte Komposita gehen auch) gebildet und als Variablenname genutzt. Bei Substantiven mit Adjektiven werden letztere auch mit einbezogen. Wird kein Artikel verwendet, so findet dies nicht statt. Auch in späteren Referenzen kann auf den Artikel verzichtet werden. Nur, wenn einer benutzt wird, wird der eigentliche Name aus der auf den Artikel folgenden Form rekonstruiert. 
 
@@ -406,7 +408,3 @@ Sei w eine Aussage mit dem Wert falsch.
 Solange w wahr ist, führe den Block {} aus. # Wird kein Mal ausgeführt (While)
 Führe den Block {} aus, solange w wahr ist. # Wird ein Mal ausgeführt (Do-While)
 ```
-
-
-
-
