@@ -18,9 +18,7 @@
 
 5. Blöcke
 
-6. Nichts
-
-7. Operationen
+6. Operationen
 
    1. Vergleiche
       1. (Un)gleichheit
@@ -34,7 +32,7 @@
       5. Divisionsrest
    3. Umwandlung
 
-8. Kontrollstrukturen
+7. Kontrollstrukturen
 
    1. Blöcke
 
@@ -44,17 +42,17 @@
 
    4. for
 
-9. Kommentare
+8. Kommentare
 
-10. Funktionen
+9. Funktionen
 
-    1. Native Funktionen
-       1. Ausgabe
+   1. Native Funktionen
+      1. Ausgabe
 
-       2. Eingabe
-    2. Sonstige
+      2. Eingabe
+   2. Sonstige
 
-11. Fehler
+10. Fehler
 
 # 1. Allgemein
 
@@ -72,7 +70,13 @@ Variablen müssen mit expliziter Typangabe deklariert werden. Sie können, müss
 
 Grundsätzlich wird die Schlüsselwortkombination `setze <Variable> auf <Wert>` benutzt, um Variablen einen Wert zuzuweisen. Die Deklaration findet nur einmal am Anfang statt und hat die Form `sei[en] <Variable> ein <Typ>`.  Um eine Variable zu initialisieren, muss an die Deklaration `mit dem Wert <Wert>` gehängt werden.
 
-Nach einer Deklaration bekommt jede Variable den Standardwert `nichts`, sofern sie nicht initialisiert wurde. (s.u.).
+Nach einer Deklaration bekommt jede Variable den Standardwert ihres Typen:
+
+Alle Zahlentypen (inkl. `Zeichen`) -> 0
+`Aussage` -> falsch
+`Zeichenkette` -> ""
+
+
 
 Beispiele:
 
@@ -240,20 +244,6 @@ Das Ausführen von Blöcken hat keinen Rückgabewert.
 Führe den Block {
     # Anweisungen
 } aus.
-```
-
-# 6. Nichts
-
-Das Schlüsselwort `nichts` beschreibt einen fehlenden Wert und ist äquivalent zu `null` aus Java. Jedoch ist `nichts`  in Kartoffelskript ein gültiger Wert für jeden Datentypen und der Standardwert für jede neu deklarierte Variable.
-
-Wird eine Operation wie Umwandlung oder eine arithmetische Operation oder eine Funktion auf einen `nichts`-Wert angewendet, so kommt es zu einem Fehler.
-
-Beispiel:
-
-```
-Sei das Wort eine Zeichenkette.
-Sei der Inhalt ein Zeichen-Feld.
-Setze den Inhalt auf die Zeichen in dem Wort. # Fehler
 ```
 
 # 7. Operationen
