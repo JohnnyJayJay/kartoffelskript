@@ -34,13 +34,11 @@
 
 7. Kontrollstrukturen
 
-   1. Blöcke
+   1. if 
 
-   2. if 
+   2. while
 
-   3. while
-
-   4. for
+   3. for
 
 8. Kommentare
 
@@ -209,7 +207,7 @@ Sie werden deklariert als `<Typ>-Feld`. Der Zugriff auf einzelne Elemente eines 
 
 Felder fangen bei 1 an, nicht bei 0 wie in anderen Sprachen.
 
-Ein neues Feld wird so erzeugt: `ein leeres Feld der Größe <Größe>`. Der Typ des Feldes wird inferiert. Die Größe gibt an, wie viele Elemente das Feld beinhaltet. Ein leeres Feld beinhaltet an jedem Index `nichts`.
+Ein neues Feld wird so erzeugt: `ein leeres Feld der Größe <Größe>`. Der Typ des Feldes wird inferiert. Die Größe gibt an, wie viele Elemente das Feld beinhaltet. Ein leeres Feld beinhaltet an jedem Index den Standardwert seines Typen.
 
 So wird ein Feld erzeugt:
 
@@ -246,15 +244,15 @@ Führe den Block {
 } aus.
 ```
 
-# 7. Operationen
+# 6. Operationen
 
-## 7.1. Vergleiche
+## 6.1. Vergleiche
 
 Vergleiche sind Operationen, die immer auf zwei Operanden mithilfe eines Operators angewendet werden und einen `Aussage` zurückgeben. Sie sind also Ausdrücke.
 
 Um einen Vergleich als Wert für den Typ `Aussage` zu nutzen, muss er das Präfix `<Artikel entsprechend des Falls> Aussage:` erhalten.
 
-### 7.1.1. (Un)gleichheit
+### 6.1.1. (Un)gleichheit
 
 Auf Gleich- und Ungleichheit wird mit den Operatoren `gleich` und `ungleich` geprüft.
 
@@ -271,7 +269,7 @@ Sei der Name eine Zeichenkette mit dem Wert "Lena".
 Sei die Bedingung eine Aussage mit dem Wert der Aussage "Lena" ist gleich dem Namen.
 ```
 
-### 7.1.2. Größer als, kleiner als
+### 6.1.2. Größer als, kleiner als
 
 Größer als hat in Kartoffelskript den Operator `größer als`, kleiner als den Operator `kleiner als`. Für inklusives < und > gibt es die Operatoren `kleiner gleich` und `größer gleich`.
 
@@ -281,7 +279,7 @@ Setze w auf die Aussage 4 ist kleiner gleich 5.
 Setze w auf die Aussage 5 ist größer als 10.
 ```
 
-### 7.1.3. Logische Operationen
+### 6.1.3. Logische Operationen
 
 Logische Operationen in Kartoffelskript beschränken sich auf die Operatoren `und` (AND), `oder` (OR) und `nicht` (NOT).  `oder` und `und` werden genutzt, um Aussagen miteinander zu verknüpfen:
 
@@ -299,11 +297,11 @@ Setze w auf die Aussage 5 ist größer als 4.       # w = wahr
 Setze w auf die Aussage 5 ist nicht größer als 4. # w = falsch
 ```
 
-## 7.2. Arithmetische Operationen
+## 6.2. Arithmetische Operationen
 
 Zu den arithmetischen Operationen gehören die 4 Grundoperationen plus, minus, mal und geteilt. Die Rechenregeln für diese werden beachtet (Punkt vor Strich) und Klammersetzung wird unterstützt.
 
-### 7.2.1. Addition
+### 6.2.1. Addition
 
 Um die Summe zweier Zahlenwerte zu erhalten, wird der Additionsoperator `+` genutzt.
 
@@ -311,7 +309,7 @@ Um die Summe zweier Zahlenwerte zu erhalten, wird der Additionsoperator `+` genu
 Setze die Summe auf 2 + 3.
 ```
 
-### 7.2.2. Subtraktion
+### 6.2.2. Subtraktion
 
 Um die Differenz zweier Zahlenwerte zu erhalten, wird der Subtraktionsoperator `-` genutzt.
 
@@ -319,7 +317,7 @@ Um die Differenz zweier Zahlenwerte zu erhalten, wird der Subtraktionsoperator `
 Setze die Differenz auf 3 - 2.
 ```
 
-### 7.2.3. Multiplikation
+### 6.2.3. Multiplikation
 
 Um das Produkt zweier Zahlenwerte zu erhalten, wird der Multiplikationsoperator `*`  genutzt.
 
@@ -327,7 +325,7 @@ Um das Produkt zweier Zahlenwerte zu erhalten, wird der Multiplikationsoperator 
 Setze das Produkt auf 2 * 3.
 ```
 
-### 7.2.4. Division
+### 6.2.4. Division
 
 Um den Quotienten zweier Zahlenwerte zu erhalten, wird der Divisionsoperator `/` genutzt.
 
@@ -337,7 +335,7 @@ Ist der Divisor des Ausdrucks = 0, so gibt es einen Fehler.
 Setze den Quotienten auf 6 / 3.
 ```
 
-### 7.2.5. Divisionsrest
+### 6.2.5. Divisionsrest
 
 Um den ganzzahligen Rest einer Division mit zwei Ganzzahlen zu erhalten, wird der Modulo-Operator `mod` genutzt.
 
@@ -345,7 +343,7 @@ Um den ganzzahligen Rest einer Division mit zwei Ganzzahlen zu erhalten, wird de
 Setze den Rest auf 10 mod 3.
 ```
 
-## 7.3. Umwandlung
+## 6.3. Umwandlung
 
 Wie bereits erwähnt, können die Datentypen `Ganzzahl`, `Fließkommazahl`, `Zeichen`, `Zeichenkette` und `Wahrheitswert` ineinander umgewandelt werden.
 
@@ -367,11 +365,11 @@ Sei w eine Aussage.
 Setze w auf die Aussage: "3" ist eine Ganzzahl.
 ```
 
-# 8. Kontrollstrukturen
+# 7. Kontrollstrukturen
 
 Kontrollstrukturen verändern den Programmfluss in Abhängigkeit von Bedingungen. 
 
-## 8.2. if
+## 7.1. if
 
 Die Schlüsselphrase für if-Statements ist `wenn <Aussage> <wahr/falsch> ist, <Anweisung>.` Zuerst wird die Aussage evaluiert und dann mit dem darauffolgenden, direkten Wert verglichen. Ergibt dies wiederum `wahr`, so wird die folgende Anweisung ausgeführt.
 
@@ -388,7 +386,7 @@ Wenn die andere Bedingung wahr ist, führe den Block {
 } aus.
 ```
 
-## 8.3 while
+## 7.2 while
 
 Die Schlüsselphrase für `while`-Schleifen ist `solange <Aussage> <wahr/falsch> ist, <Anweisung>`.  Für `do-while`-Schleifen werden Haupt- und Nebensatz einfach vertauscht. Die Überprüfung der Bedingung findet genau so statt wie bei if-Statements.
 
@@ -397,4 +395,43 @@ Sei w eine Aussage mit dem Wert falsch.
 
 Solange w wahr ist, führe den Block {} aus. # Wird kein Mal ausgeführt (While)
 Führe den Block {} aus, solange w wahr ist. # Wird ein Mal ausgeführt (Do-While)
+```
+
+## 7.3 for
+
+Die Schlüsselphrase für `for`-Scheifen ist `für <Zählervariable> im Bereich von <Startwert> bis <Endwert>, <Answeisung>.`
+
+```
+Für die Ganzzahl i im Bereich von 0 bis 10, führe den Block {} aus.
+```
+
+Die Schlüsselphrase für `foreach`-Scheifen ist `für jedes Element <Name> aus <Feld>, <Answeisung>.`
+
+```
+Sei das Array ein Ganzzahl-Feld.
+Setze das Array auf ein leeres Feld der Größe 2.
+Setze Element 1 aus dem Array auf -10.
+Setze Element 2 aus dem Array auf 42.
+
+Für jedes Element i aus dem Array, führe den Block {} aus. 
+```
+
+# 8. Kommentare
+
+Eine einzelne Zeile kann mit dem `#`-Zeichen auskommentiert werden.
+
+```
+# Ich bin nur ein einzeiliger Kommentar
+```
+
+Mehrere Zeilen werden über die Schlüsselphrase `sei der Block {} ein Kommentar` auskommentiert. 
+
+```
+Sei der Block {
+Ich
+bin
+ein
+mehrzeiliger
+Kommentar
+} ein Kommentar.
 ```
