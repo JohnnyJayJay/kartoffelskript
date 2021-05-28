@@ -1,8 +1,8 @@
-1. Allgemein
+1. [Allgemein](https://github.com/JohnnyJayJay/kartoffelskript/blob/master/spezifikation.md#1-allgemein)
 
-2. Variablen
+2. [Variablen](https://github.com/JohnnyJayJay/kartoffelskript/blob/master/spezifikation.md#2-variablen)
 
-3. Datentypen
+3. [Datentypen](https://github.com/JohnnyJayJay/kartoffelskript/blob/master/spezifikation.md#3-datentypen)
 
    1. Ganzzahl
 
@@ -14,11 +14,11 @@
 
    5. Wahrheitswert
 
-4. Felder (Arrays)
+4. [Felder (Arrays)](https://github.com/JohnnyJayJay/kartoffelskript/blob/master/spezifikation.md#4-felder-arrays)
 
-5. Blöcke
+5. [Blöcke](https://github.com/JohnnyJayJay/kartoffelskript/blob/master/spezifikation.md#5-bl%C3%B6cke)
 
-6. Operationen
+6. [Operationen](https://github.com/JohnnyJayJay/kartoffelskript/blob/master/spezifikation.md#7-operationen)
 
    1. Vergleiche
       1. (Un)gleichheit
@@ -32,7 +32,7 @@
       5. Divisionsrest
    3. Umwandlung
 
-7. Kontrollstrukturen
+7. [Kontrollstrukturen](https://github.com/JohnnyJayJay/kartoffelskript/blob/master/spezifikation.md#8-kontrollstrukturen)
 
    1. Blöcke
 
